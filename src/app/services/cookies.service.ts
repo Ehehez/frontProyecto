@@ -13,7 +13,7 @@ export class CookiesService {
   }
 
   getPage(params) {
-    return this.http.get('http://localhost:3000/page/' + params.page);
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/page/' + params.page);
   }
 
 }

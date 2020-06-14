@@ -10,7 +10,7 @@ import { LogIn, LogInSuccess, LogInFailure } from '../store/auth/auth.actions';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL = 'http://localhost:3000';
+  private BASE_URL = 'https://proy-daw-amm.herokuapp.com:3000';
   private state;
   private subs = new Subscription();
   private headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -36,7 +36,7 @@ export class AuthService {
 
   logIn(email: string, password: string) {
     let c;
-    this.http.post('http://localhost:3000/users/login', { 'email': email, 'password': password }).subscribe((x) => {
+    this.http.post('https://proy-daw-amm.herokuapp.com:3000/users/login', { 'email': email, 'password': password }).subscribe((x) => {
       c = x;
       if (c != {}) {
         c.user.pw = "";
@@ -59,11 +59,11 @@ export class AuthService {
     }*/
 
 
-    const url = `http://localhost:3000/users`;
+    const url = `'https://proy-daw-amm.herokuapp.com:3000/users`;
     return this.http.post(url, payload);
   }
 
   getFollowers() {
-    return this.http.get('http://localhost:3000/users/followed');
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/users/followed');
   }
 }

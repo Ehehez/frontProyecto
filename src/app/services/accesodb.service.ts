@@ -9,63 +9,63 @@ export class AccesodbService {
   constructor(private http: HttpClient) { }
 
   postPost(payload) {
-    return this.http.post('http://localhost:3000/post', payload);
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/post', payload);
   }
 
   getUsersByFilter(field, value) {
-    return this.http.get('http://localhost:3000/users/search/' + field + "/" + value);
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/users/search/' + field + "/" + value);
   }
 
   getProfile() {
-    return this.http.get('http://localhost:3000/users/me');
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/users/me');
   }
 
   setFollow(id) {
     let payload = {
       _id: id
     }
-    return this.http.post('http://localhost:3000/users/follow', payload)
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/users/follow', payload)
   }
 
   unsetFollow(id) {
     let payload = {
       _id: id
     }
-    return this.http.post('http://localhost:3000/users/unfollow', payload)
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/users/unfollow', payload)
   }
 
   getPosts() {
-    return this.http.get('http://localhost:3000/post');
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/post');
   }
 
   getOnePost(id) {
     const payload = {
       post: id,
     }
-    return this.http.post('http://localhost:3000/post/single', payload);
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/post/single', payload);
   }
   getFollowedPosts() {
-    return this.http.get('http://localhost:3000/post/followed')
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/post/followed')
   }
 
   getUsers() {
-    return this.http.get('http://localhost:3000/users');
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/users');
   }
 
   logout() {
-    return this.http.post('http://localhost:3000/users/me/logoutall', null)
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/users/me/logoutall', null)
   }
 
   getRatings() {
-    return this.http.get('http://localhost:3000/rating')
+    return this.http.get('https://proy-daw-amm.herokuapp.com:3000/rating')
   }
 
   setRatings(payload) {
-    return this.http.post('http://localhost:3000/rating', payload);
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/rating', payload);
   }
 
   setComment(payload) {
-    return this.http.post('http://localhost:3000/post/comment', payload);
+    return this.http.post('https://proy-daw-amm.herokuapp.com:3000/post/comment', payload);
   }
 
 }

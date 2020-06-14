@@ -39,19 +39,19 @@ export class MuroComponent implements OnInit, OnDestroy {
     this.pageSize = 4;
     this.subs.add(this.store.subscribe((x) => this.state = x));
     if (this.params.name == "self") {
-      this.subs.add(this.http.get('http://localhost:3000/post/own').subscribe((x) => {
+      this.subs.add(this.http.get('https://proy-daw-amm.herokuapp.com:3000/post/own').subscribe((x) => {
         this.posts = x;
       }));
-      this.subs.add(this.http.get('http://localhost:3000/users/me').subscribe((x) => {
+      this.subs.add(this.http.get('https://proy-daw-amm.herokuapp.com:3000/users/me').subscribe((x) => {
         this.user = x;
       }));
 
       this.newP = true;
     } else {
-      this.subs.add(this.http.get('http://localhost:3000/post/own').subscribe((x) => {
+      this.subs.add(this.http.get('https://proy-daw-amm.herokuapp.com:3000/post/own').subscribe((x) => {
         this.posts = x;
       }));
-      this.subs.add(this.http.get('http://localhost:3000/users/me').subscribe((x) => {
+      this.subs.add(this.http.get('https://proy-daw-amm.herokuapp.com:3000/users/me').subscribe((x) => {
         this.user = x;
       }));
 
