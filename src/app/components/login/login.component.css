@@ -1,0 +1,12 @@
+.justify-content-center {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.color-green{
+    background-color: #ecffe6;
+}
+
+.imagen {
+    margin: 0 auto;
+}

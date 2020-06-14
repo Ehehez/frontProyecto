@@ -1,0 +1,82 @@
+<div class="Site">
+    <div class="Site-content">
+
+        <div class="col-12 row" style="margin: 0 auto">
+            <div class="col-12 row">
+                <div class="col-8 offset-1" style="margin: 0 auto">
+                    <h2>Muro personal</h2>
+                </div>
+                <div class="col-3" style="white-space:nowrap;">
+                    <i class=" fa fa-user-circle menuHead fa-3x iconSize offset-lg-3 col-3 text-center"
+                        (click)="profile(perfil)" aria-hidden="true"></i>
+                    <i class="fa fa-plus menuHead fa-3x offset-2 iconSize col-2 text-center" (click)=" newPost(post)"
+                        aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="row col-12 m-0 p0" style="margin-top: 15px;">
+                <div class=" col-12 row m-0 p-0">
+                    <h3 class="justify-content-center" *ngIf="posts?.length == 0">No hay nada por aquí</h3>
+                    <div class="justify-content-center col-12" *ngIf="posts?.length > 0">
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="posts?.length">
+                        </ngb-pagination>
+                    </div>
+                    <div class="mb-3 col-12"
+                        *ngFor="let post of posts | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <app-post [post]="post"></app-post>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <ng-template #post let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Añadir Post</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="divtabla">
+                    <table [formGroup]="form" class="table">
+                        <tr>
+                            <th class="text-center"><label>Titulo</label></th>
+                            <td><input type="text" formControlName="title">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center"><label>Contenido</label></th>
+                            <td>
+                                <textarea formControlName="content" rows="6" cols="40"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-primary" (click)="onSubmit()"
+                                    [disabled]="!form.valid">Submit</button>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #perfil let-modal>
+            <div class="row">
+                <img src="../../../assets/img/user-placeholder.jpg" class="d-inline-block"
+                    style="margin:0 auto; margin-bottom:15px" alt="placeholder">
+            </div>
+            <ul class="list-group text-center">
+                <li class="list-group-item">
+                    Username :{{user?.username}}
+                </li>
+                <li class="list-group-item">
+                    Email : {{user?.email}}
+                </li>
+                <li class="list-group-item">
+                    Nombre : {{user?.name}}
+                </li>
+                <li class="list-group-item">
+                    Apellidos : {{user?.surname}}
+                </li>
+            </ul>
+        </ng-template>
+    </div>
+</div>

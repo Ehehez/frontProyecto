@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class=" justify-content-center" *ngIf="users?.length > 0">
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="users?.length"></ngb-pagination>
+    </div>
+    <table *ngIf="users?.length > 0; else vacio" class="col-12 row table text-center" style="margin: 0 auto">
+        <tr class="row col-12 ">
+            <th class="d-none d-lg-inline-block col-lg-2 offset-lg-1 celdaResponsive">
+                Nombre de usuario
+            </th>
+            <th class="d-none d-lg-inline-block col-lg-2">
+                Email
+            </th>
+            <th class="d-none d-lg-inline-block col-lg-2">
+                Nombre
+            </th>
+            <th class="d-none d-lg-inline-block col-lg-2">
+                Apellidos
+            </th>
+            <th class="d-none d-lg-inline-block col-lg-2">
+                Actions
+            </th>
+        </tr>
+        <tr *ngFor="let user of users| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" app-follow
+            [user]="user" class="row col-12 filaResponsive"></tr>
+    </table>
+    <ng-template #vacio>
+        <div>
+            No se ha encontrado ningún resultado.
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-dark default-color col-12">
+        <div class="row col-1 col-md-1 menu">
+            <img src="../../../assets/img/logo.png" style="height:50px; width: auto;" (click)="gotoMuro()">
+        </div>
+        <div class="col-2 offset-9 col-lg-4 offset-lg-0 menu row">
+            <i class="fa fa-bars float-right menuHead fa-3x col-6 offset-6 d-lg-none" (click)="openMenu()"
+                aria-hidden="true"></i>
+            <div class="menuBotones row col-12 p-0 m-0" [ngClass]="{ 'noHidden' : menuAux }">
+                <button class="btn btn-outline-white btn-md col-12 col-lg-3 text-center color-white"
+                    (click)="gotoHome()">Home</button>
+                <button class="btn btn-outline-white btn-md col-12 text-center col-lg-3 color-white"
+                    (click)="gotoMuro()">Muro</button>
+                <button class="btn btn-outline-white btn-md col-12 text-center col-lg-3 color-white"
+                    (click)="logOut()">Logout</button>
+            </div>
+        </div>
+        <form class="form-inline col-12 col-md-10 offset-md-1 col-lg-5 col-lg-offset-3 ml-auto marginResponsive"
+            [formGroup]="headForm">
+            <select formControlName="select" class="form-control col-3" ng-selected="value == name">
+                <option name="name" value="name">Nombre</option>
+                <option name="email" value="email">Email</option>
+                <option name="username" value="username">Username</option>
+            </select>
+            <input class="form-control  col-6" formControlName="search" type="search" placeholder="Search"
+                aria-label="Search">
+            <button class="btn btn-outline-white btn-md my-2 my-sm-0 col-3 button-style color-white" type="submit"
+                [disabled]="!headForm.valid" (click)="search()">Buscar</button>
+        </form>
+    </nav>
+
+</div>

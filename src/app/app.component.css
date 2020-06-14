@@ -1,0 +1,43 @@
+.header {
+   margin:0 auto; 
+   background-color:#336600; 
+   margin-bottom:5px;
+   color:white;
+}
+
+.todo {
+    min-height:100%!important;
+}
+
+footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
+}
+
+.style-footer {
+    padding: 1rem;
+}
+
+@media (min-width:991px){
+    .position-header {
+        position:fixed; 
+        top:0px; 
+        left:0px;
+        width:100%; 
+        z-index:10;
+    }
+
+    .position-content {
+        margin-top:82px;
+    }
+
+    .position-footer {
+        position:fixed; 
+        bottom:0px; 
+        left:0px;
+        width:100%; 
+        z-index:10;
+    }
+}

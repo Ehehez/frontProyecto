@@ -1,0 +1,93 @@
+<div class="Site">
+    <!--<div class="row">
+        <app-header class="col-12 header"></app-header>
+    </div>-->
+    <div class="row px-2">
+        <!--  Site-content -->
+        <div class="col-11 col-lg-9">
+            <h2 class="justify-content-center">Muro de usuarios seguidos</h2>
+            <hr>
+            <h3 *ngIf="listaPost?.length == 0">Vacio</h3>
+            <div class="col-lg-12" *ngFor="let post of listaPost">
+                <app-post [post]="post"></app-post>
+            </div>
+        </div>
+        <div class="col-1 col-lg-3 position">
+            <i class="fa fa-user fa-3x col-12 d-lg-none" (click)="openUsers(users)" aria-hidden="true"></i>
+            <div class="col-12 d-lg-inline-block d-none">
+                <h4 class="justify-content-center d-block">Usuarios Seguidos</h4>
+                <h5 *ngIf="lista?.length == 0" class="text-center">No sigues a ningún usuario</h5>
+                <div *ngIf="lista?.length > 0" class="alinear">
+                    <div class=" justify-content-center">
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="lista?.length">
+                        </ngb-pagination>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"
+                            *ngFor="let list of lista | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            Username :
+                            {{list?.username}}
+                            <button (click)="open(content,list._id)" class="btn btn-primary float-right">Ver
+                                más</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <ng-template #users let-modal>
+            <div class="col-12" [ngClass]="{ 'noHidden' : menuAux }">
+                <h4 class="justify-content-center d-block">Usuarios Seguidos</h4>
+                <h5 *ngIf="lista?.length == 0" class="text-center">No sigues a ningún usuario</h5>
+                <div *ngIf="lista?.length > 0" class="alinear">
+                    <div class=" justify-content-center">
+                        <ngb-pagination [(page)]="page2" [pageSize]="pageSize2" [collectionSize]="lista?.length">
+                        </ngb-pagination>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"
+                            *ngFor="let list of lista | slice: (page2-1) * pageSize2 : (page2-1) * pageSize2 + pageSize2">
+                            Username :
+                            {{list?.username}}
+                            <button (click)="open(content,list._id)" class="btn btn-primary float-right">Ver
+                                más</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </ng-template>
+        <ng-template #content let-modal>
+            <div class="row">
+                <img src="../../../assets/img/user-placeholder.jpg" class="d-inline-block sizeImage"
+                    style="margin:0 auto; margin-bottom:15px" alt="placeholder">
+            </div>
+            <ul class="list-group text-center">
+                <li class="list-group-item">
+                    Username :{{detalles?.username}}
+                </li>
+                <li class="list-group-item">
+                    Email : {{detalles?.email}}
+                </li>
+                <li class="list-group-item">
+                    Nombre : {{detalles?.name}}
+                </li>
+                <li class="list-group-item">
+                    Apellidos : {{detalles?.surname}}
+                </li>
+            </ul>
+            <hr>
+            <div *ngIf="listasPost.length > 0">
+                <h4>Lista de Posts</h4>
+                <div class="col-lg-12 blogShort"
+                    *ngFor="let post of listasPost | slice: (page3-1) * pageSize3 : (page3-1) * pageSize3 + pageSize3">
+                    <app-post [post]="post"></app-post>
+                </div>
+                <div class=" justify-content-center">
+                    <ngb-pagination [(page)]="page3" [pageSize]="pageSize3" [collectionSize]="listasPost?.length">
+                    </ngb-pagination>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

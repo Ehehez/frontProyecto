@@ -1,0 +1,21 @@
+<td class="col-6 col-lg-2 offset-lg-1 celdaResponsive">
+    <span class="d-lg-none">Username : </span> {{user?.username}}
+</td>
+<td class="col-6 col-lg-2 celdaResponsive">
+    <span class="d-lg-none">Email : </span>{{user?.email}}
+</td>
+<td class="col-6 col-lg-2 celdaResponsive">
+    <span class="d-lg-none">Nombre : </span>{{user?.name}}
+</td>
+<td class="col-6 col-lg-2 celdaResponsive">
+    <span class="d-lg-none">Apellidos : </span>{{user?.surname}}
+</td>
+<td class="col-12 col-lg-2 celdaResponsive">
+    <div *ngIf="follow">
+        <button class="btn btn-success" (click)="followUser(user._id)">Follow</button>
+    </div>
+    <div *ngIf="!follow">
+        <button class="btn btn-danger" (click)="unfollowUser(user._id)">Unfollow
+        </button>
+    </div>
+</td>

@@ -1,0 +1,99 @@
+<div class="col-12 mb-2">
+    <div class="card gedf-card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="mr-2">
+                        <img class="rounded-circle" width="45" src="../../../assets/img/user-placeholder.jpg" alt="">
+                        <!--https://picsum.photos/50/50-->
+                    </div>
+                    <div class="ml-2">
+                        <div class="h5 m-0">{{postCreator}}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <span class="card-link">
+                <h5 class="card-title">{{post?.title}}</h5>
+            </span>
+
+            <p class="card-text">
+                {{post?.content}}>
+            </p>
+        </div>
+        <div class="card-footer row">
+            <span class="col-12 col-lg-3 footerPost">Valoración media: {{media}}</span>
+            <span class="col-12 col-lg-3 offset-lg-1 footerPost">Tu Valoración: <ngb-rating [(rate)]="rat" [max]="5"
+                    (rateChange)="sendRating($event)" [readonly]="read">
+                </ngb-rating></span>
+            <span class="col-6 offset-lg-1 col-lg-1 footerDetails" style="white-space: nowrap;"
+                (click)="openComment(comentario)"><i class="fa fa-comment"></i>
+                Añadir Comentario</span>
+            <span href="#" class="col-6 col-lg-1 offset-lg-1 footerDetails" style="white-space: nowrap;"
+                (click)="openDetails(vermas)"><i class="fa fa-info"></i> Ver
+                Más</span>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #vermas let-modal>
+    <div class="col-12">
+        <h4 class="text-center">Comentarios:</h4>
+        <div *ngIf="post.comments.length > 0" class="minHeight">
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="post.comments?.length">
+            </ngb-pagination>
+            <div *ngFor="let com of post.comments | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+                style="border: 1px lightskyblue solid; border-radius:10px" class="mb-2">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-2">
+                                <img class="rounded-circle" width="45" src="../../../assets/img/user-placeholder.jpg"
+                                    alt="">
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0">{{com.user_email}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{com.comment}}>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="post.comments.length == 0" class="minHeight">
+            No hay comentarios
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #comentario let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Añadir comentario</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="divtabla">
+            <table [formGroup]="form" class="table">
+                <tr>
+                    <td>
+                        <textarea formControlName="comment" rows="6" cols="60"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-primary" (click)="onSubmit()" [disabled]="!form.valid">Enviar</button>
+                </tr>
+            </table>
+        </div>
+    </div>
+</ng-template>

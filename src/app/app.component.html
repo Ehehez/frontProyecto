@@ -1,0 +1,15 @@
+<div class="todo">
+    <div class="row position-header" *ngIf="!hidden">
+        <app-header class="col-12 header"></app-header>
+    </div>
+    <div class="container-fluid position-content">
+        <router-outlet></router-outlet>
+    </div>
+    <div style="margin-bottom:100px"></div>
+    <div class="row position-footer style-footer" style="background-color:black" *ngIf="!hidden">
+        <div class="container-fluid">
+            <app-footer></app-footer>
+        </div>
+    </div>
+
+</div>

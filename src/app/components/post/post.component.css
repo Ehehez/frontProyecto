@@ -1,0 +1,23 @@
+.footerPost {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.footerDetails {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.card-header {
+    background-color: #66ff33;
+}
+
+.minHeight {
+    min-height:400px;
+}
+.card-footer {
+    background-color: #c6ffb3;
+}
+ngb-rating:focus {
+     outline:0 !important;
+}

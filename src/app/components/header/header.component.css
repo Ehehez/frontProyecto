@@ -1,0 +1,53 @@
+.noHidden {
+    display:initial;
+}
+
+.color-white {
+    color: white;
+    font-weight: bold;
+}
+
+.button-style {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+@media (min-width:992px) {
+    .menuHead {
+        display: none;
+    }
+}
+
+@media (max-width:991px) {
+
+    .marginResponsive {
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .menuBotones {
+        display:none;
+        
+    }
+
+    .container {
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+        width: 100%;
+    }
+
+    .noHidden {
+        display: initial;
+        position: absolute;
+        right:0;
+        top:50px;
+        min-width:120px!important;
+        z-index:10;
+        background-color: #336600;
+        color: white;
+        border: 1px solid black;
+    }
+    .menuHead {
+        text-align: right;
+        margin-bottom:10px;
+    }
+}
