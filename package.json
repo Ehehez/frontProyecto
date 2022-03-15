@@ -29,7 +29,7 @@
     "font-awesome": "^4.7.0",
     "git": "^0.1.5",
     "jquery": "^3.5.1",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "ngx-cookieconsent": "^2.2.3",
     "ngx-toastr": "^11.3.2",
     "rxjs": "~6.4.0",
